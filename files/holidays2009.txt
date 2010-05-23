@@ -1,0 +1,10 @@
+New Years Day|January|1
+Martin Luther King Day|January|19
+Memorial Day|May|25
+Independence Day|July|3
+Labor Day|September|7
+Veterans Day|November|11
+Thanksgiving Day|November|26
+Columbus Day Observance|November|27
+Presidents Day Observance|December|24
+Christmas Day|December|25

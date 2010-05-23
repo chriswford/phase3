@@ -1,0 +1,22 @@
+Introduction|Sk: Ch1 PG: Ch 1,2|T
+Object-Oriented & Java|Sk: 2.1-2.4,4.4 PG: 10.1,10.4|T
+Inheritance I|Sk: 2.5-2.11|T
+Inheritance I|Sk: 2.5-2.11|T
+Inheritance II|Sk: Ch 3 PG: 10.2-10.3|T
+Inheritance II|Sk: Ch 3 PG: 10.5-10.6, Ch 11, 12.1|T
+Inheritance II|Sk: Ch 3, Handouts|T
+Methods|Sk: Ch 4|T
+Methods|Sk: Ch 4|T
+Methods|Sk: Ch 4 PG: ch 13, Ch 14|T
+Catch up, review|Sk: Ch 1-4 PG: Ch 1-14|T
+In class midterm|Sk: Ch 1-4 PG: Ch 1-14|T
+Class structure|Sk: Ch 5 PG: Ch 8-9|T
+Class structure|Sk: Ch 5 PG: Ch 8-9|T
+Examples|Sk: Ch 6 PG: Ch 14|T
+Design patterns|Sk: Ch 7|T
+Examples|Sk: Ch 8-9|T
+Components|PG: Ch 15|T
+Advanced topics 1|Handouts|F
+Advanced topics 2|Handouts|F
+Advanced topics 3|Handouts|F
+Catch up, review|Sk: All PG: All|T

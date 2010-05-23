@@ -1,0 +1,10 @@
+Introduction, OO Review|Ch 1, 2, Handouts|T
+Abstraction & polymorphism|Handouts|T
+Patterns & Creational Patterns|Ch 3-9, 10, 11, 12|T
+Collectional Patterns|Ch 15, 16, 17, 18|T
+Structural Patterns|Ch 19, 20, 21, 22, 24|T
+Behavioral Patterns, midterm 10/13|Ch 30, 33, 36|T
+Architecture|Handouts|T
+Formal Methods|Handouts|T
+Formal Methods|Handouts|T
+Formal Methods|Handouts|T
