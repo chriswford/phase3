@@ -51,8 +51,13 @@ public class SimpleTool implements Tool760
 	}
 	public void evaluate()
 	{
-		String outfile=ui.getString("Save loaded object to file:");
-		String file_type=ui.getString("Text output - T\nXML output - X\n:");
+		if(cal==null)
+		{
+			ui.showError("No calendar or schedule loaded yet");
+			return;
+		}
+		String outfile=ui.getString("Save loaded object to file\n\toutput filename:");
+		String file_type=ui.getString("Output file type\n\tText output - T\n\tXML output - X\n:");
 		
 		try
 		{
@@ -60,12 +65,15 @@ public class SimpleTool implements Tool760
 			FileWriter fstream = new FileWriter(outfile);
 			BufferedWriter out = new BufferedWriter(fstream);
 			if(file_type.equals("X"))
-			{
+			{	//XML file
 				out.write(cal.toXML().toString());
+				ui.showMessage(cal.getName()+" saved successfully as XML to "+outfile);
+
 			}
 			else if(file_type.equals("T"))
-			{
+			{	//text file
 				out.write(cal.toString());
+				ui.showMessage(cal.getName()+" saved successfully to "+outfile);
 			}
 			else
 			{
@@ -78,11 +86,10 @@ public class SimpleTool implements Tool760
 		{//Catch exception if any
 			ui.showError("There was an error saving the file: " + e.getMessage());
 		}
-		ui.showMessage(outfile+" saved successfully");
 	}
 	public void exit()
 	{
-		ui.showMessage("SimpleTool Exit() called.");
+		ui.showMessage("Exiting system.");
 		ui.shutdown();
 	}//exit
 
