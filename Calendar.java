@@ -30,7 +30,7 @@ public abstract class Calendar
 
 	public String toString()
 	{
-		String returnString="";
+		String returnString="\n-----------------------------\n"+getName()+"\n-----------------------------\n";
 		for(int i=0;i<weeksContainer.size();i++)
 		{
 			returnString+=weeksContainer.get(i).toString();

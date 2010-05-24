@@ -1,7 +1,8 @@
 /************************************************************
 * CLASS:      SimpleTool
 * FILENAME:   SimpleTool.java
-* AUTHOR:     Thomas C. Hartrum
+* ORIGINAL AUTHOR:     Thomas C. Hartrum
+* MODIFICATIONS BY:	   Chris Ford
 * LOGIN:      w001tch
 * ASSIGNMENT: CEG 760 SP04, Example #1.
 * SYSTEM & COMPILER: JDK v1.4
@@ -39,7 +40,10 @@ public class SimpleTool implements Tool760
 
 	public void display()
 	{
-
+		if(cal==null)
+			ui.showError("No calendar or schedule loaded");
+		else
+			ui.showMessage(cal.toString());
 	}
 	public void doOther(String arg)
 	{
@@ -47,8 +51,34 @@ public class SimpleTool implements Tool760
 	}
 	public void evaluate()
 	{
-	
-	
+		String outfile=ui.getString("Save loaded object to file:");
+		String file_type=ui.getString("Text output - T\nXML output - X\n:");
+		
+		try
+		{
+			// Create file 
+			FileWriter fstream = new FileWriter(outfile);
+			BufferedWriter out = new BufferedWriter(fstream);
+			if(file_type.equals("X"))
+			{
+				out.write(cal.toXML().toString());
+			}
+			else if(file_type.equals("T"))
+			{
+				out.write(cal.toString());
+			}
+			else
+			{
+				ui.showError("Unkown output type");
+			}
+			//Close the output stream
+			out.close();
+		}
+		catch (Exception e)
+		{//Catch exception if any
+			ui.showError("There was an error saving the file: " + e.getMessage());
+		}
+		ui.showMessage(outfile+" saved successfully");
 	}
 	public void exit()
 	{
@@ -69,8 +99,7 @@ public class SimpleTool implements Tool760
 			//get the calendar, created form text file;
 			cal=loadCalendar(cal_file);
 			cal.addHolidays(hols);
-			System.out.println(cal);
-			
+			ui.showMessage(cal.getName()+" successfully loaded");
 		}
 		else
 		if(choice.equals("S"))
