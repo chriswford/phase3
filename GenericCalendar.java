@@ -26,13 +26,62 @@ public class GenericCalendar extends Calendar
 		}
 
 	}
+	//iterate back through the weeks of each month, and using the holidayLookup object
+	//	that was built form the holidays file, change the day to a holiday if it is found in the lookup
+	public void addHolidays(HolidayLookup hols)
+	{
+		for(int c=0;c<weeksContainer.size();c++)
+		{
+			Month curmonth=(Month) weeksContainer.get(c);
+			for(int i=0;i<curmonth.weeks.size();i++)
+			{
+				for(int d=0;d<curmonth.weeks.get(i).numDays();d++)
+				{
+					Day curday=curmonth.weeks.get(i).days.get(d);
+					HolidayResult hol_result=hols.findHoliday(curmonth.monthNum(),curday.getDayOfMonth());
+					if(hol_result!=null && !curday.isNull())
+					{
+		
+						//public Holiday(String dname,int dayWeek, int dayMonth, String hname)
+						int day_of_week=curday.getDayOfWeek();
+						int day_of_month=curday.getDayOfMonth();
+						String dname=curday.getName();
+						curmonth.weeks.get(i).days.set(d, new Holiday(dname,day_of_week,day_of_month,hol_result.getName()));
+					}
+				}
+			}
+		}
+	}
 /*	
 	public static void main(String args[])
 	{
 		Calendar gencal=new GenericCalendar("Year Calendar",1,6,2010,12,11,2010);
 		
-		System.out.println(gencal);
-		System.out.println("\n\ndone");
+		System.out.println(((GenericCalendar)gencal).toXML());
+
+                System.out.println("\n\n\n");
+
+                System.out.println(gencal);
 	}
 */
+        public SimpleXMLDocument toXML()
+        {
+            SimpleXMLDocument returnDoc = new SimpleXMLDocument();
+
+            returnDoc.PushElement("calendar", "name", this.getName());
+
+            returnDoc.PushElement("year", "number" , "2005");
+
+		for(int i=0;i<weeksContainer.size();i++)
+		{
+			returnDoc.AddXMLBody(((Month)weeksContainer.get(i)).toXML());
+		}
+
+            returnDoc.PopElement();
+
+            returnDoc.PopElement();
+
+            return returnDoc;
+        }
+
 }

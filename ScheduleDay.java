@@ -16,5 +16,10 @@ public class ScheduleDay extends Day
 		return null;
 	}
 
+        public SimpleXMLDocument toXML()
+        {
+            return null;
+        }
+
 	
 }

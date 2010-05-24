@@ -15,4 +15,6 @@ public class DailySchedule extends WeekContainer
 		//prints name then iterates through weeks and prints and calls each week's toString()
 		return "";
 	}
+
+        
 }

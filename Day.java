@@ -15,6 +15,12 @@ public abstract class Day
 	{
 		return name;
 	}
+
+        public String getNameShort()
+        {
+            return CalendarCalc.getDayNameShort(day_of_week);
+        }
+
 	public int getDayOfMonth()
 	{
 		return day_of_month;
@@ -23,5 +29,15 @@ public abstract class Day
 	{
 		return day_of_week;
 	}
+	public Boolean isHoliday()	//specialized subclasses overwrite
+	{
+		return false;
+	}
+	public Boolean isNull()		//specialized subclasses overwrite
+	{
+		return false;
+	}
 	public abstract String toString();	//subclasses must implement
+
+        public abstract SimpleXMLDocument toXML();
 }

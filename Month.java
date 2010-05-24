@@ -8,7 +8,7 @@ public class Month extends WeekContainer
 	private int start_day;
 	private int end_day;	//day month ends on (any range from 1-last_day)
 	private int last_day;	//last day of month (28-31)
-	private ArrayList<Day> days=new ArrayList();
+	protected ArrayList<Day> days=new ArrayList();
 	
 	public Month(String mname,int mnum,int myear,int sday,int eday)
 	{
@@ -26,7 +26,7 @@ public class Month extends WeekContainer
 		{
 			int new_day_of_week=CalendarCalc.getDayNumOfWeek(year, month_num,c);
 			String new_day_name=CalendarCalc.getDayName(new_day_of_week);
-			weeks.get(0).addDay(new NullDay(new_day_name,new_day_of_week,c));
+			weeks.get(0).addDay(new NullDay(new_day_name,new_day_of_week,0));
 		}
 		for(int curday=1;curday<=last_day;curday++)
 		{
@@ -50,19 +50,22 @@ public class Month extends WeekContainer
 				for(int c=new_day_of_week;c<6;c++)
 				{
 					new_day_name=CalendarCalc.getDayName(new_day_of_week+c);
-					weeks.get(curweek).addDay(new NullDay(new_day_name,new_day_of_week+c,curday));
+					weeks.get(curweek).addDay(new NullDay(new_day_name,new_day_of_week+c,0));
 				}
 			}
 		}
 
 	
 	}
-
+	public int monthNum()
+	{
+		return month_num;
+	}
 	public String toString()
 	{
 		//iterates through weeks collection and appends the output of the month name,
 		//and year, followed by a the weeks toString() output.
-		String returnString=getName()+" "+year+"\n S  M  T  W  T  F  S\n";
+		String returnString=getName()+" "+year+"\n S   M   T   W   T   F   S\n";
 		int new_line_count=0;
 		for(int c=0;c<weeks.size();c++)
 		{
@@ -78,5 +81,21 @@ public class Month extends WeekContainer
 
 		return returnString+"\n\n";
 	}
+
+        public SimpleXMLDocument toXML()
+        {
+            SimpleXMLDocument returnDoc = new SimpleXMLDocument();
+
+            returnDoc.PushElement("month", "name", this.getName());
+
+		for(int c=0;c<weeks.size();c++)
+		{
+			returnDoc.AddXMLBody(((FullWeek)weeks.get(c)).toXML());
+		}
+
+            returnDoc.PopElement();
+
+            return returnDoc;
+        }
 
 }

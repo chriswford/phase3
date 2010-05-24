@@ -12,6 +12,6 @@ public class DailyWeek extends Week
 	{
 		//prints week # and each of the days' toString() methods
 		return null;
-	}
+        }
 
 }

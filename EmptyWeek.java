@@ -2,6 +2,8 @@
 public class EmptyWeek extends Week
 {
 
+    private String content;
+
 	public EmptyWeek()
 	{
 		// TODO Auto-generated constructor stub

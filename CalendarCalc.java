@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class CalendarCalc
 {
-	
+
 	static final HashMap<String,Integer> MONTH_NAME_VALUES = new HashMap<String,Integer>()
 	{{
 		put("January",1);
@@ -18,8 +18,8 @@ public class CalendarCalc
 		put("November",11);
 		put("December",12);
 	}};
-	
-	
+
+
 	static final HashMap<Integer,String> MONTH_NUM_VALUES = new HashMap<Integer,String>()
 	{{
 		put(1,"January");
@@ -98,6 +98,17 @@ public class CalendarCalc
 		put(5,"Friday");
 		put(6,"Saturday");
 	}};
+	//abbreviated day names
+	static final HashMap<Integer,String> DAY_NUMS_SHORT = new HashMap<Integer,String>()
+	{{
+		put(0,"Sun");
+		put(1,"Mon");
+		put(2,"Tue");
+		put(3,"Wed");
+		put(4,"Thu");
+		put(5,"Fri");
+		put(6,"Sat");
+	}};
 	static final HashMap<Integer,Integer> DAYS_IN_MONTH = new HashMap<Integer,Integer>()
 	{{
 		put(1,31);
@@ -123,17 +134,21 @@ public class CalendarCalc
 		int day_num=CalendarCalc.getDayNumOfWeek(2010,5,20);
 		String day=CalendarCalc.getDayName(day_num);
 		System.out.println(day+" "+day_num);
-		
+
 		System.out.println("\n\nWeeks in May: "+CalendarCalc.calcWeeks(2010, 5, 1,30));
-		
+
 		System.out.println("\n\nDays in Feb: "+CalendarCalc.calcEndDay(2000,2));
-		
-				
+
+
 	}
 */
 	public static String getDayName(int day_num)
 	{
 		return DAY_NUMS.get(day_num);
+	}
+	public static String getDayNameShort(int day_num)
+	{
+		return DAY_NUMS_SHORT.get(day_num);
 	}
 	public static int calcWeeks(int year,int month,int start_day,int end_day)
 	{
@@ -155,11 +170,11 @@ public class CalendarCalc
 	public static int getDayNumOfWeek(Integer year,int month,int day_of_month)
 	{
 		//returns 1-7 based on the name of the day of the month
-		
+
 //		Now for an example of the complete algorithm, let's use April 24, 1982.
 		int century=Integer.parseInt(year.toString().substring(0,2)+"00");
 		int last_two_digits_of_year=year-century;
-		
+
 //	1)	Look up the 1900s in the centuries table: 0
 		int step1=CENTURIES.get(century);
 //	2)	Note the last two digits of the year: 82
@@ -172,12 +187,12 @@ public class CalendarCalc
 			step4=START_DAYS_OF_MONTHS_LEAP.get(month);
 		else
 			step4=START_DAYS_OF_MONTHS.get(month);
-//	5)	Add all numbers from steps 1–4 to the day of the month (in this case, 24): 0+82+20+6+24=132.
+//	5)	Add all numbers from steps 1√ê4 to the day of the month (in this case, 24): 0+82+20+6+24=132.
 		int step5=(day_of_month)+step1+step2+step3+step4;
 //	6)	Divide the sum from step 5 by 7 and find the remainder: 132/7=18 remainder 6
 		int day_num_of_week=step5%7;
-//	7)	Find the remainder in the days table: 6=Saturday.		
-		
+//	7)	Find the remainder in the days table: 6=Saturday.
+
 		return day_num_of_week;
 	}
 	public static int monthNum(String name)
@@ -194,8 +209,8 @@ public class CalendarCalc
 		//returns last day of month in number form based on month m (1-12)
 		if(isLeapYear(year))
 			return DAYS_IN_MONTH_LEAP.get(month);
-		else 
+		else
 			return DAYS_IN_MONTH.get(month);
 	}
-	
+
 }

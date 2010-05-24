@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public abstract class Week
 {
 	protected ArrayList<Day> days=new ArrayList();
+    private int weekNumber;
 	
 	public Week()
 	{
@@ -17,5 +18,11 @@ public abstract class Week
 	{
 		return days.size();
 	}
+        public int getNumber()
+        {
+            return weekNumber;
+        }
+
 	public abstract String toString();	//subclasses must implement
+
 }

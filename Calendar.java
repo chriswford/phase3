@@ -22,6 +22,12 @@ public abstract class Calendar
 		end_year=eyear;
 		
 	}
+
+        public String getName()
+        {
+            return name;
+        }
+
 	public String toString()
 	{
 		String returnString="";
@@ -31,5 +37,6 @@ public abstract class Calendar
 		}
 		return returnString;
 	}
+
 }
 
